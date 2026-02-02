@@ -74,9 +74,16 @@ function scrollToId(id: string) {
 }
 
 export default function App() {
-  const scrollRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({ container: scrollRef });
-  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 24, mass: 0.4 });
+  const scrollRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    container: scrollRef,
+    layoutEffect: false
+  });
+  const progress = useSpring(scrollYProgress, { 
+    stiffness: 140, 
+    damping: 24, 
+    mass: 0.4 
+  });
 
   return (
     <div className="app">
